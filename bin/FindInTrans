@@ -1,0 +1,3 @@
+#!/bin/bash
+
+find . -iname "*.trans" -print | xargs grep -le "$1" | cut -d"/" -f2-

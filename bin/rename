@@ -1,0 +1,26 @@
+#!/bin/bash
+
+if [ "$1" = "" ]; then
+   echo "usage: rename <files>"
+   exit 1
+fi
+
+while [ -z "$search" ]
+do
+   echo -n "Old file expression: "
+   read search
+done
+
+while [ -z "$replace" ]
+do
+   echo -n "New file expression: "
+   read replace
+done
+
+
+for file in "$@"
+do
+   newfile=$( echo $file | sed -e "s/${search}/${replace}/g" )
+   echo "renaming $file to $newfile"
+   mv $file $newfile
+done

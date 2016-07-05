@@ -1,0 +1,5 @@
+#!/bin/bash
+
+find . -iname "*.cpp" -print | xargs grep -le "$1" | cut -d"/" -f2-
+find . -iname "*.tpp" -print | xargs grep -le "$1" | cut -d"/" -f2-
+find . -iname "*.c" -print | xargs grep -le "$1" | cut -d"/" -f2-

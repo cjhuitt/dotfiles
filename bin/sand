@@ -1,0 +1,32 @@
+#!/bin/bash
+
+if [ "$1" = "" ]; then
+   echo "usage: sand <files>"
+   exit 1
+fi
+
+while [ -z "$search" ]
+do
+   echo -n " Search expression: "
+   read search
+done
+
+while [ -z "$replace" ]
+do
+   echo -n "Replace expression: "
+   read replace
+done
+
+for file in "$@"
+do
+   if grep -q -e "${search}" $file
+   then
+      if cat $file | sed -e "s/${search}/${replace}/g" > ${file}.out
+      then
+         mv ${file}.out $file
+         echo "$file changed."
+      fi
+   fi
+done
+
+exit 0
