@@ -1,0 +1,32 @@
+
+"syn keyword typeFunction 
+"syn keyword typeTypedef 
+"syn keyword typeConstant 
+"syn keyword typeStruct 
+"syn keyword typeClass 
+"syn keyword typeMacro 
+"syn keyword typeEnum 
+"syn keyword typeDefine 
+"syn keyword typeNamespace 
+
+" Default highlighting
+if version >= 508 || !exists("did_type_syntax_inits")
+  if version < 508
+    let did_type_syntax_inits = 1
+    command -nargs=+ HiLink hi link <args>
+  else
+    command -nargs=+ HiLink hi def link <args>
+  endif
+"  HiLink typeFunction Function
+"  HiLink typeTypedef Type
+"  HiLink typeConstant Constant
+"  HiLink typeStruct Type
+"  HiLink typeClass Class
+"  HiLink typeUnion Type
+"  HiLink typeMacro Macro
+"  HiLink typeEnum Type
+"  HiLink typeDefine Constant
+"  HiLink typeNamespace Namespace
+  delcommand HiLink
+endif
+

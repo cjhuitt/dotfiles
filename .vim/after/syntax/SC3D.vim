@@ -1,0 +1,32 @@
+
+"syn keyword SC3DFunction 
+syn keyword SC3DTypedef RatioType
+"syn keyword SC3DConstant 
+"syn keyword SC3DStruct 
+syn keyword SC3DClass DisplayManager ObjectManager BodyContainerRow UnstructuredBody TriangleBody BoundaryObject UnstructuredBodyContainerRow StructuredBodyContainerRow StructuredBody SC3DGridGenTaskManager SC3DGridGenApplicationPlugin SC3DGridGenScenario BoundaryPositionInterface BoundaryPositionWidget GridFileBodyOutputInterface GridFileSpecificationOutputInterface GridFileBoxRefinementInterface SolverRotorFileRotorOutputInterface GridGenProcess GridGeneratorProcessAddArgumentsInterface BoundaryWallsInterface ReportBoundaryOutputInterface BoundaryFreeStreamInterface BoundaryWallsWidget BoundaryFreeStreamWidget OutputBoundaryConditionsInterface ReportBodyOutputInterface SC3DGridGenPlugin TopLayerRow MidLayerRow LayerRow BodyRefinementLayers XRefinementLayers YRefinementLayers ZRefinementLayers XBodyLayer YBodyLayer ZBodyLayer AddLayerInterface AddLayerWidget BodyBoundsInterface BodyObjectsInterface BodyLayerDimensionsInterface BodyLayerDimensionsWidget LayerGridlinesInterface BodyLayerRow LayerGridlinesWidget LayerBoundaryInterface FreeSpaceRefinementLayers TopRefinementLayers BottomRefinementLayers FrontRefinementLayers BackRefinementLayers RightRefinementLayers LeftRefinementLayers FreeSpaceLayerRow TopFreeSpaceLayer BottomFreeSpaceLayer FrontFreeSpaceLayer BackFreeSpaceLayer RightFreeSpaceLayer LeftFreeSpaceLayer MidFreeSpaceLayerRow StartPositionInterface BodySuppliedBoundsInterface BodyLayerSuppliedBoundsInterface BodyLayerObjectsInterface LayerFileSpecificationOutputInterface LayerFileNumberOutputInterface LayerRatioInterface LayerRatioWidget FreeSpaceSizeInterface FreeSpaceSizeWidget BoundarySpecificationInterface BodyLayerGridLineClampInterface BodyLayerGridLineClampWidget ReportBodyLayerInterface ReportFreeSpaceLayerInterface FreeSpaceLayerConversionFactorWidget FreeSpaceLayerLengthWidget BodyLayerBoundaryWidget BodyLayerGridDataWidget BodyLayerBoundaryInterface FreeSpaceLayerLengthInterface FreeSpaceLayerConversionFactorInterface BodyLayerGridDataInterface
+"syn keyword SC3DMacro 
+syn keyword SC3DEnum StartupResult WallSide WallType WallValue CutplaneDirection BoundaryType
+"syn keyword SC3DDefine 
+syn keyword SC3DNamespace SC3DGridGen 
+
+" Default highlighting
+if version >= 508 || !exists("did_SC3D_syntax_inits")
+  if version < 508
+    let did_SC3D_syntax_inits = 1
+    command -nargs=+ HiLink hi link <args>
+  else
+    command -nargs=+ HiLink hi def link <args>
+  endif
+"  HiLink SC3DFunction Function
+  HiLink SC3DTypedef Type
+"  HiLink SC3DConstant Constant
+"  HiLink SC3DStruct Type
+  HiLink SC3DClass Class
+"  HiLink SC3DUnion Type
+"  HiLink SC3DMacro Macro
+  HiLink SC3DEnum Type
+"  HiLink SC3DDefine Constant
+  HiLink SC3DNamespace Namespace
+  delcommand HiLink
+endif
+

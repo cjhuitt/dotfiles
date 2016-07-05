@@ -1,0 +1,22 @@
+PATH DEFAULT=~/bin:${PATH}
+PATH DEFAULT=${PATH}:/opt/remote/bin/64:/opt/remote/bin
+PATH DEFAULT=${PATH}:/opt/eldk-5.3/powerpc/sysroots/i686-eldk-linux/usr/bin
+PATH DEFAULT=${PATH}:/opt/eldk-5.3/powerpc/sysroots/i686-eldk-linux/usr/bin/powerpc-linux
+PATH DEFAULT=${PATH}:/opt/nxt/sdk/latest/nitrogen6x/sysroots/x86_64-agleader-linux/usr/bin
+PATH DEFAULT=${PATH}:/opt/nxt/sdk/latest/nitrogen6x/sysroots/x86_64-agleader-linux/usr/bin/arm-agleader-linux-gnueabi
+PATH DEFAULT=${PATH}:/opt/lpcxpresso_7.9.2_493/lpcxpresso/tools/bin
+PATH DEFAULT=${PATH}:/opt/lpcxpresso_7.9.2_493/lpcxpresso/bin
+
+P4PORT DEFAULT=perforce:1666
+P4USER DEFAULT=chuitt
+P4CONFIG DEFAULT=.p4config
+
+PROJECTS DEFAULT=${HOME}/projects/
+
+CAN_DIR DEFAULT=${PROJECTS}/cansim/
+GPS_DIR DEFAULT=${PROJECTS}/gpssim/
+TC_DIR DEFAULT=${PROJECTS}/tcsim/
+
+ILF_VIEWER_DIR DEFAULT=${PROJECTS}/path/to/IlfViewer
+INTERCHANGE_DIR DEFAULT=${PROJECTS}/path/to/InterchangeViewer
+
