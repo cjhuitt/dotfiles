@@ -1,0 +1,6 @@
+[user]
+	email = chuitt@agleader.com
+	name = Caleb Huitt
+[alias]
+	co = checkout
+	unstage = reset
