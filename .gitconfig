@@ -4,3 +4,5 @@
 [alias]
 	co = checkout
 	unstage = reset
+[push]
+	default = simple
