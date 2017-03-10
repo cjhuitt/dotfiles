@@ -95,7 +95,7 @@ set cinoptions+=*30
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 " This sets the size of the tabstop to the given number of spaces
-" (my preference is 3)
+" (my preference is 4)
 set tabstop=4
 " This makes sure the shiftwidth is a tab's length
 set shiftwidth=4
@@ -132,6 +132,10 @@ if version >= 700
     " this gets rid of the stupid menu pop-up that I hate.
     set completeopt="preview"
 endif
+
+
+" Show line numbers
+set number
 
 
 " Command height = 1 line
@@ -229,7 +233,7 @@ map <F3> <Esc>:bn<CR>
 map <F4> <Esc>:A<CR>
 
 "Set ninja as make program
-set makeprg=ninja
+set makeprg=../../docker_build.py
 " Cool compile options
 function! s:ActiveFileMake()
     let makefile_path = expand("%:h")

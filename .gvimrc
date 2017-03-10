@@ -34,6 +34,7 @@ set lines=55
 :gui
 syntax on 
 highlight Comment guifg=grey60
+highlight LineNr guifg=grey30
 
 " Command height = 1 line
 set ch=1

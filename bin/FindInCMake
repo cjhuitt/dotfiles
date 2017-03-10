@@ -1,0 +1,4 @@
+#!/bin/bash
+
+find . -iname "*CMakeLists.txt" -print | xargs grep -le "$1" | cut -d"/" -f2-
+find . -iname "*.cmake" -print | xargs grep -le "$1" | cut -d"/" -f2-

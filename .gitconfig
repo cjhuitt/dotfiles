@@ -4,5 +4,6 @@
 [alias]
 	co = checkout
 	unstage = reset
+	branches = branch
 [push]
 	default = simple
