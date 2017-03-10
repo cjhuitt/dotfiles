@@ -138,6 +138,10 @@ endif
 set number
 
 
+" Use the system clipboard
+set clipboard=unnamedplus
+
+
 " Command height = 1 line
 set ch=1
 
