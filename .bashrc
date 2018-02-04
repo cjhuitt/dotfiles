@@ -180,7 +180,9 @@ if ! shopt -oq posix; then
   fi
 fi
 
-source ~/.myenv
+if [ -f ~/.myenv ]; then
+    source ~/.myenv
+fi
 
 # Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
 export PATH="$PATH:$HOME/bin/:$HOME/.rvm/bin"
