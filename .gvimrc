@@ -1,4 +1,5 @@
 " Folding - requires gvim >= 6
+syntax on 
 if version >= 600
    highlight Folded guibg=grey40 guifg=grey60
 endif
@@ -19,14 +20,14 @@ if version >= 500
    highlight Class guifg=Cyan
    highlight Namespace guifg=Blue
    highlight MatchParen None gui=underline
-   set background=light
+"   set background=light
 
 endif
 
 " Always use console text for warnings, instead of pop-up windows.
 set guioptions+=c
 
-set guifont=Bitstream\ Vera\ Sans\ Mono\ 9
+"set guifont=Bitstream\ Vera\ Sans\ Mono\ 9
 
 set columns=174
 set lines=55
@@ -34,7 +35,6 @@ set lines=55
 :gui
 syntax on 
 highlight Comment guifg=grey60
-highlight LineNr guifg=grey30
 
 " Command height = 1 line
 set ch=1

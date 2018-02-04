@@ -1,21 +1,89 @@
-" This causes the filetypes to be loaded, and also indenting to be modified 
-" based on the filetype.
-filetype indent on
-" This causes filetype plugins to work as well
-filetype plugin on
-" This should be set by the detected filetype, usually.
-"set smartindent
-"set cindent
+set nocompatible      " required for Vundle
+filetype off          " required for Vundle
 
-" This adds qbs file type detection
-au BufRead,BufNewFile *.qbs     setfiletype javascript
+" set the runtime path to include Vundle and initialize
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
+
+" let Vundle manage Vundle, required
+Plugin 'VundleVim/Vundle.vim'
+Plugin 'Valloric/YouCompleteMe'
+Plugin 'sheerun/vim-polyglot'
+Plugin 'tpope/vim-endwise'
+Plugin 'tpope/vim-dispatch'
+Plugin 'tpope/vim-fugitive'
+Plugin 'tpope/vim-repeat'
+Plugin 'tpope/vim-bundler'
+Plugin 'tpope/vim-rails'
+Plugin 'noahfrederick/vim-skeleton'
+Plugin 'airblade/vim-gitgutter'
+Plugin 'pseewald/vim-anyfold'
+Plugin 'thirtythreeforty/lessspace.vim'
+Plugin 'nfvs/vim-perforce'
+Plugin 'nathanaelkane/vim-indent-guides'
+Plugin 'DoxygenToolkit.vim'
+Plugin 'a.vim'
+Plugin 'incbufswitch.vim'
+Plugin 'artoj/qmake-syntax-vim'
+" Plugin 'jiangmiao/auto-pairs'
+
+" Git plugin not hosted on GitHub
+Plugin 'git://git.wincent.com/command-t.git'
+
+" All of your Plugins must be added before the following line
+call vundle#end()            " required
+filetype plugin indent on    " required
+" To ignore plugin indent changes, instead use:
+"filetype plugin on
+"
+" Brief help
+" :PluginList       - lists configured plugins
+" :PluginInstall    - installs plugins; append `!` to update or just :PluginUpdate
+" :PluginSearch foo - searches for foo; append `!` to refresh local cache
+" :PluginClean      - confirms removal of unused plugins; append `!` to auto-approve removal
+"
+" see :h vundle for more details or wiki for FAQ
+" Put your non-Plugin stuff after this line
+"
+
+"Map F4 to alternate files
+nnoremap <F4> :A<CR>
+
+" Anyfold options
+let anyfold_activate=1
+set foldlevel=1
+
+" Gitgutter options
+set updatetime=250
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" DoxygenToolkit config
+"
+let g:DoxygenToolkit_commentType = "C++"
+let g:DoxygenToolkit_blockHeader="Sep!"
+let g:DoxygenToolkit_blockFooter=""
+let g:DoxygenToolkit_briefTag_pre=""
+let g:DoxygenToolkit_paramTag_pre="\\param[in] "
+let g:DoxygenToolkit_paramTag_post="  "
+let g:DoxygenToolkit_returnTag="\\return "
+let g:DoxygenToolkit_authorName="Caleb Huitt"
+let g:DoxygenToolkit_startCommentBlock = "///"
+nmap    _D      :Dox<CR>
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" p4 settings.
+"
+map _E :P4edit<CR>
+map _A :!p4 add <C-R>=expand("%:p:s?/mnt/ssd?~?")<CR><CR>
+map _R :P4revert<CR>
+
+
 " This line adds the detected filetype's syntax definitions to the dictionary,
 " which adds them to auto-completion.  vim.org tip #498
 au FileType * exe('setl dict+='.$VIMRUNTIME.'/syntax/'.&filetype.'.vim')
 
 
-
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""" 
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " This block sets the indent values.
 " Set "normal" indent to be 1 shiftwidth
 set cinoptions=>s
@@ -94,16 +162,17 @@ set cinoptions+=)20
 set cinoptions+=*30
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
+
 " This sets the size of the tabstop to the given number of spaces
 " (my preference is 4)
-set tabstop=4
+"set tabstop=4
 " This makes sure the shiftwidth is a tab's length
-set shiftwidth=4
+"set shiftwidth=4
 " This makes sure that the tab is changed into spaces
 set expandtab
 
 " Set so that long lines go off the side of the screen, instead of wrapping
-"set wrap 
+"set wrap
 set nowrap
 " Set the number of characters that scroll at once when you reach the side of
 " the screen
@@ -117,22 +186,9 @@ set nohlsearch
 " Set for incremental positioning during a search.
 set incsearch
 
-" Set so that the backspace key will backspace over autoindenting, over the 
+" Set so that the backspace key will backspace over autoindenting, over the
 " EOL, and over the start of an insert.
 set bs=2
-
-" Folding - requires vim >= 6
-if version >= 600
-    set foldmethod=indent
-endif
-
-
-" completion options - requires vim >= 7
-if version >= 700
-    " this gets rid of the stupid menu pop-up that I hate.
-    set completeopt="preview"
-endif
-
 
 " Show line numbers
 set number
@@ -158,31 +214,22 @@ set laststatus=2
 " %y : type of file loaded.
 " %= : Move from left-side items to right-side items
 " %l : line number
-" %v : virtual column number 
+" %v : virtual column number
 " %P : Percentage through file of displayed window.
 set statusline=%<%f%h%m%r\ %y\ (%02n)%=\ \ \ %l,%v\ %P
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 
-
-" Setting textwidth will cause vim to automatically wrap long lines.
-" TODO: Someday figure out how to make this file-dependent, so that certain
-" files, such as latex, will have it while other files, such as code files,
-" won't.
-set textwidth=80
-
-
-
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Comment stuff:
 
-" vim-style comments - This will cause vim-style comments (starting with a 
+" vim-style comments - This will cause vim-style comments (starting with a
 " double-quote) to be automatically inserted at the beginning of the line
 " after you hit <enter>.
 set comments+=:\"
 
 " lhs comments
-" Each of these lines enables the use of ,C (where C is a character) to put 
+" Each of these lines enables the use of ,C (where C is a character) to put
 " the appropriate comment delimiter at the beginning of each line.
 " # Comment
 map ,# :s/^/#/<CR> <Esc>:nohlsearch <CR>
@@ -201,7 +248,7 @@ map ,; :s/^/;/<CR> <Esc>:nohlsearch<CR>
 " - Comment
 map ,- :s/^/--/<CR> <Esc>:nohlsearch<CR>
 " wrapping comments
-" Each of these lines enables the use of ,C (where C is a character) to 
+" Each of these lines enables the use of ,C (where C is a character) to
 " put wrapping comments on each line.  The begin-comment delimiter is placed
 " at the beginning of each line, and the end-comment delimiter is placed at the
 " end of each line.
@@ -216,7 +263,6 @@ map ,< :s/^\(.*\)$/<!-- \1 -->/<CR> <Esc>:nohlsearch<CR>
 map ,c :s/^\/\/\\|^--\\|^> \\|^[#"%!;]//<CR> <Esc>:nohlsearch<CR>
 map ,d :s/^\([/(]\*\\|<!--\) \(.*\) \(\*[/)]\\|-->\)$/\2/<CR> <Esc>:nohlsearch<CR>
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-
 
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -237,14 +283,14 @@ map <F3> <Esc>:bn<CR>
 map <F4> <Esc>:A<CR>
 
 "Set ninja as make program
-set makeprg=../../docker_build.py
+"set makeprg=../../docker_build.py
 " Cool compile options
-function! s:ActiveFileMake()
-    let makefile_path = expand("%:h")
-    while filereadable(makefile_path . "/Makefile") == FALSE
-        let makefile_path = 
-    endwhile
-endfunction
+"function! s:ActiveFileMake()
+"    let makefile_path = expand("%:h")
+"    while filereadable(makefile_path . "/Makefile") == FALSE
+"        let makefile_path =
+"    endwhile
+"endfunction
 " short-lists all the current make errors
 map <F5>  <Esc>:cl<CR>
 " long-lists all the current make errors (exact output from make)
@@ -254,28 +300,17 @@ map <F7>  <Esc>:cp<CR>
 " Goes to the next error in the list
 map <F8>  <Esc>:cn<CR>
 " calls up the make command and waits for a target
-map <F9> <Esc>:make check<CR>
+"map <F9> <Esc>:make check<CR>
 " does a make depend in the directory that vim was run from
-map <F11> <Esc>:make depends<CR>
+"map <F11> <Esc>:make depends<CR>
 " does a make in the directory that vim was run from.
-map <F12> <Esc>:make -j 7<CR>
+"map <F12> <Esc>:make -j 7<CR>
 "map <F12> <Esc>:cexpr system("MakeHelper " . expand("%:p"))<CR>
 "map <F12> <Esc>:make\ %<.o<CR>
 " Does a make lint for the current file, and loads the lint file as the error
 " list
-map ,l <Esc>:!rm /tmp/errors.lint<CR> :!autolint <C-R>=expand("%:p")<CR> /tmp/errors.lint<CR>:cfile /tmp/errors.lint<CR>
+"map ,l <Esc>:!rm /tmp/errors.lint<CR> :!autolint <C-R>=expand("%:p")<CR> /tmp/errors.lint<CR>:cfile /tmp/errors.lint<CR>
 
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-
-
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Programming abbreviations.
-
-" Ydef   insert "#define" at start of line
-ab Ydef   <ESC>0i#define
-
-" Yinc   insert "#include" at start of line
-ab Yinc   <ESC>0i#include "<ESC>i"
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 
@@ -289,22 +324,6 @@ function! s:insert_separator()
 endfunction
 command! -nargs=0 Separator :call <SID>insert_separator()
 nmap    _S      :call <SID>insert_separator()<CR>
-
-function! s:insert_header()
-        let curr_year = strftime("%Y")
-        execute "set paste"
-        normal O
-        call <SID>insert_separator()
-        execute "normal jO///"
-        execute "normal jO/// "
-        execute "normal jO///"
-        execute "normal jO// Copyright " . curr_year . " Ag Leader Technology, Inc."
-        normal jO
-        call <SID>insert_separator()
-        execute "set nopaste"
-        normal 5k
-        call <SID>insert_doxy_filename()
-endfunction
 
 function! s:update_doxy_filename()
         let save_cursor = getpos(".")
@@ -375,46 +394,9 @@ function! s:insert_file_guard()
         execute "set nopaste"
 endfunction
 
-function! s:create_hfile()
-        execute "set paste"
-        execute "normal o"
-        execute "set nopaste"
-        execute "normal gg"
-        call <SID>insert_header()
-        call <SID>insert_file_guard()
-        normal gg5j$
-endfunction
-
-function! s:create_cfile()
-        execute "set paste"
-        let include_name = substitute(expand("%:t"), "\\.c", "\\.h", "g")
-        execute "normal o#include \"" . include_name . "\""
-        execute "normal o"
-        execute "set nopaste"
-        execute "normal gg"
-        call <SID>insert_header()
-        normal gg3j$
-endfunction
-
-function! s:create_cppfile()
-        execute "set paste"
-        let include_name = substitute(expand("%:t"), "\\.cpp", "\\.h", "g")
-        execute "normal o#include \"" . include_name . "\""
-        execute "normal o"
-        execute "set nopaste"
-        execute "normal gg"
-        call <SID>insert_header()
-        normal gg3j$
-endfunction
-
 nmap    _H      :call <SID>insert_header()<CR>
 nmap    _G      :call <SID>update_file_guard()<CR>
 nmap    _P      :call <SID>update_doxy_filename()<CR>
-autocmd  BufNewFile *.{h} call <SID>create_hfile()
-autocmd  BufNewFile *.{cpp} call <SID>create_cppfile()
-autocmd  BufNewFile *.{c} call <SID>create_cfile()
-"autocmd  BufWritePre *.{h,c,cpp} call <SID>update_doxy_filename()
-"autocmd  BufWritePre *.{h} call <SID>update_file_guard()
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 
@@ -433,27 +415,6 @@ vmap <silent> _B :s/;/<C-V><CR>{<C-V><CR>}<C-V><CR><CR>
 
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" This little bit changes the tab to be sensitive to what has come before it,
-" in insert mode.  If at the beginning of a line, or after a semi-colon, this
-" will insert three spaces.  Otherwise, it tries to complete the word.
-" Multiple tabs should continue the completion attempts.  Also, shift-tab will
-" run through the list, backwards.
-" http://www.vim.org/tips/tip.php?tip_id=102 
-function! InsertTabWrapper(direction)
-    let col = col('.') - 1
-    if !col || getline('.')[col - 1] !~ '\k'
-        return "\<tab>"
-    elseif "backward" == a:direction
-        return "\<c-p>"
-    else
-        return "\<c-n>"
-    endif
-endfunction
-inoremap <tab> <c-r>=InsertTabWrapper("forward")<cr>
-inoremap <s-tab> <c-r>=InsertTabWrapper("backward")<cr>
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Edit another file in the same directory as the current file
 " uses expression to extract path from current file's path
 " http://www.vim.org/tips/tip.php?tip_id=2
@@ -462,42 +423,9 @@ map ,sp :sp <C-R>=expand("%:p:h") . "/" <CR>
 map ,w :w <C-R>=expand("%:p:h") . "/" <CR>
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Tags are very useful things, but we can extend their abilities.  Most of the
-" time, I will be in a source-code directory.  By default, the tags command
-" looks for a "tags" or "TAGS" file in the same directory as the current file,
-" then in the current directory.  After that, we want to be able to move
-" between source directories as necessary to follow tags.  For our usual
-" working directory location, this will add the ability to read tags generated
-" on the system include and local include header files:
-"set tags+=../../tags,../../TAGS
-" This will add the ability to change between code directories as necessary.
-" This is after the system and local includes so that the "official"
-" definitions that are read by the current source directory are read first.
-"set tags+=../tags,../TAGS
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 " read abbreviations from the abbreviation file.
 so ~/.vim_abbr
+" read abbreviations from the abbreviation file.
+so ~/.vim_abbr
 
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" p4 settings.
-"
-map _E :!p4 edit <C-R>=expand("%:p:s?/mnt/ssd?~?")<CR><CR>:e<CR>
-map _A :!p4 add <C-R>=expand("%:p:s?/mnt/ssd?~?")<CR><CR>
-map _R :!p4 revert <C-R>=expand("%:p:s?/mnt/ssd?~?")<CR><CR>:e<CR>
-
-
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" DoxygenToolkit config
-"
-let g:DoxygenToolkit_commentType = "C++"
-let g:DoxygenToolkit_blockHeader="Sep!"
-let g:DoxygenToolkit_blockFooter=""
-let g:DoxygenToolkit_briefTag_pre=""
-let g:DoxygenToolkit_paramTag_pre="\\param[in] "
-let g:DoxygenToolkit_paramTag_post="  "
-let g:DoxygenToolkit_returnTag="\\return "
-let g:DoxygenToolkit_authorName="Caleb Huitt"
-let g:DoxygenToolkit_startCommentBlock = "///"
-nmap    _D      :Dox<CR>

@@ -1,8 +1,0 @@
-let g:netrw_dirhistmax  =10
-let g:netrw_dirhist_cnt =6
-let g:netrw_dirhist_1='/home/caleb/projects/sunray1/Sunray/Application/Main/version'
-let g:netrw_dirhist_2='/home/caleb/projects/mcp/Mcp/Application/Objects'
-let g:netrw_dirhist_3='/home/caleb/projects/sunray/Components/Qt/5/QtThreads'
-let g:netrw_dirhist_4='/home/caleb/projects/1.2/Mcp/Application/Components'
-let g:netrw_dirhist_5='/home/caleb/projects/sunray/Mcp/Application/Defaults'
-let g:netrw_dirhist_6='/home/caleb/projects/Components/Can/dev'
