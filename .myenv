@@ -1,3 +1,0 @@
-ulimit -c unlimited
-alias qvfb="nohup /opt/trolltech/qt-4.8.5-Xubuntu14.04_64/bin/qvfb -width 1024 -height 768 -depth 16 &"
-
