@@ -1,3 +1,0 @@
-#!/bin/bash
-
-find . -iname "*.f" -print | xargs grep -le "$1" | cut -d"/" -f2-
