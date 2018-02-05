@@ -1,5 +1,5 @@
 " Folding - requires gvim >= 6
-syntax on 
+syntax on
 if version >= 600
    highlight Folded guibg=grey40 guifg=grey60
 endif
@@ -7,10 +7,6 @@ endif
 " Only do this for Vim version 5.0 and later.
 if version >= 500
    " Switch on syntax highlighting if it wasn't on yet.
-   if !exists("syntax_on")
-     syntax on
-   endif
-
    highlight Normal guibg=Black guifg=Green
    highlight Cursor guibg=grey80 guifg=NONE
    highlight NonText guibg=grey40
@@ -32,8 +28,6 @@ set guioptions+=c
 set columns=174
 set lines=55
 
-:gui
-syntax on 
 highlight Comment guifg=grey60
 
 " Command height = 1 line
