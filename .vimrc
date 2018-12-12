@@ -1,3 +1,4 @@
+let $PATH='$HOME/.cargo/bin:/usr/bin:/usr/local/bin:/bin:/usr/sbin:/sbin'
 set nocompatible      " required for Vundle
 filetype off          " required for Vundle
 
@@ -50,7 +51,7 @@ filetype plugin indent on    " required
 nnoremap <F4> :A<CR>
 
 " Anyfold options
-let anyfold_activate=1
+autocmd Filetype * AnyFoldActivate
 set foldlevel=1
 
 " Gitgutter options
@@ -165,9 +166,9 @@ set cinoptions+=*30
 
 " This sets the size of the tabstop to the given number of spaces
 " (my preference is 4)
-"set tabstop=4
+set tabstop=4
 " This makes sure the shiftwidth is a tab's length
-"set shiftwidth=4
+set shiftwidth=4
 " This makes sure that the tab is changed into spaces
 set expandtab
 
@@ -195,7 +196,7 @@ set number
 
 
 " Use the system clipboard
-set clipboard=unnamedplus
+"set clipboard=unnamedplus
 
 
 " Command height = 1 line
@@ -426,6 +427,9 @@ map ,w :w <C-R>=expand("%:p:h") . "/" <CR>
 
 " read abbreviations from the abbreviation file.
 so ~/.vim_abbr
-" read abbreviations from the abbreviation file.
-so ~/.vim_abbr
+
+" YouCompleteMe options
+" close the preview window after finishing the completion:
+let g:ycm_autoclose_preview_window_after_completion = 1
+let g:ycm_extra_conf_globlist = ['/Volumes/Projects/*']
 
