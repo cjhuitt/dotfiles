@@ -26,6 +26,7 @@ Plugin 'DoxygenToolkit.vim'
 Plugin 'a.vim'
 Plugin 'incbufswitch.vim'
 Plugin 'artoj/qmake-syntax-vim'
+Plugin 'SirVer/ultisnips'
 " Plugin 'jiangmiao/auto-pairs'
 
 " Git plugin not hosted on GitHub
@@ -47,8 +48,32 @@ filetype plugin indent on    " required
 " Put your non-Plugin stuff after this line
 "
 
-"Map F4 to alternate files
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Alternate files config
+"
+" Switchs C/h files, if you have the a.vim script installed to switch between
+" alternate files.
+" http://www.vim.org/scripts/script.php?script_id=31
 nnoremap <F4> :A<CR>
+" Handles automatically creating the missing file (or not). Set to 0 to
+" create, 1 to not.
+"g:alternateNoDefaultAlternate=1
+" Set the possible alternate extensions to look for.  Known defaults listed
+" about the command.
+" g:alternateExtensions_h = "c,cpp,cxx,cc,CC"
+let g:alternateExtensions_h = "c,cpp,cxx,tpp"
+" g:alternateExtensions_H' = "C,CPP,CXX,CC"
+"g:alternateExtensions_H' = "C,CPP,CXX,CC"
+" g:alternateExtensions_cpp' = "h,hpp"
+"g:alternateExtensions_cpp' = "h,hpp"
+" g:alternateExtensions_CPP' = "H,HPP"
+"g:alternateExtensions_CPP' = "H,HPP"
+" g:alternateExtensions_c' = "h"
+"g:alternateExtensions_c' = "h"
+" g:alternateExtensions_C' = "H"
+"g:alternateExtensions_C' = "H"
+" g:alternateExtensions_cxx'
+"g:alternateExtensions_cxx'
 
 " Anyfold options
 autocmd Filetype * AnyFoldActivate
@@ -278,10 +303,6 @@ map <F1> :IncBufSwitch<CR>
 map <F2> <Esc>:bp<CR>
 " Goes to the next file in the buffer list
 map <F3> <Esc>:bn<CR>
-" Switchs C/h files, if you have the a.vim script installed to switch between
-" alternate files.
-" http://www.vim.org/scripts/script.php?script_id=31
-map <F4> <Esc>:A<CR>
 
 "Set ninja as make program
 "set makeprg=../../docker_build.py
@@ -369,7 +390,7 @@ function! s:insert_doxy_filename()
         else
             let file_name = trunc_file_name
         endif
-        execute "normal jO \\file " . file_name
+        execute "normal jO/ \\file " . file_name
 endfunction
 
 function! s:insert_file_guard()
@@ -432,4 +453,13 @@ so ~/.vim_abbr
 " close the preview window after finishing the completion:
 let g:ycm_autoclose_preview_window_after_completion = 1
 let g:ycm_extra_conf_globlist = ['/Volumes/Projects/*']
+let g:ycm_auto_hover=''
 
+map ,f :YcmCompleter FixIt<CR>
+map ,g :YcmCompleter GoToImprecise<CR>
+" vmap ,i :YcmCompleter Format
+
+
+" compilers
+noremap ,m :set makeprg=make<CR>
+noremap ,n :set makeprg=ninja<CR>
