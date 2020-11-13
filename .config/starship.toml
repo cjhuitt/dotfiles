@@ -1,0 +1,31 @@
+format="""
+$directory\
+$git_branch\
+$git_state\
+$git_status\
+$line_break\
+$username\
+$hostname\
+$time\
+$cmd_duration\
+$character\
+"""
+
+[directory]
+truncation_length=10
+truncate_to_repo=false
+
+[git_branch]
+symbol = ""
+
+[hostname]
+ssh_only = false
+format="@[$hostname]($style) "
+
+[time]
+disabled = false
+time_format = "%l:%M%p"
+
+[username]
+show_always = true
+format="[$user]($style)"
