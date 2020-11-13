@@ -23,7 +23,11 @@ endif
 " Always use console text for warnings, instead of pop-up windows.
 set guioptions+=c
 
-"set guifont=Bitstream\ Vera\ Sans\ Mono\ 9
+if has("gui_running")
+    if has("gui_macvim")
+        set guifont=JetBrainsMono-Regular:h12
+    endif
+endif
 
 set columns=174
 set lines=55
@@ -35,5 +39,7 @@ set ch=1
 
 " Tell gvim not to beep or flash
 set vb t_vb=
+
+noremap ,l :set bg=light<CR>
 
 vsplit
