@@ -1,3 +1,17 @@
+set pyxversion=3
+"if has('python_compiled')
+"  echo 'compiled with Python 2.x support'
+"  if has('python_dynamic')
+"    echo 'Python 2.x dynamically loaded'
+"  endif
+"endif
+"if has('python3_compiled')
+"  echo 'compiled with Python 3.x support'
+"  if has('python3_dynamic')
+"    echo 'Python 3.x dynamically loaded'
+"  endif
+"endif
+
 let $PATH='$HOME/.cargo/bin:/usr/bin:/usr/local/bin:/bin:/usr/sbin:/sbin'
 set nocompatible      " required for Vundle
 filetype off          " required for Vundle
@@ -26,7 +40,10 @@ Plugin 'DoxygenToolkit.vim'
 Plugin 'a.vim'
 Plugin 'incbufswitch.vim'
 Plugin 'artoj/qmake-syntax-vim'
-Plugin 'SirVer/ultisnips'
+Plugin 'fatih/vim-go'
+if has('python3')
+    Plugin 'SirVer/ultisnips'
+endif
 " Plugin 'jiangmiao/auto-pairs'
 
 " Git plugin not hosted on GitHub

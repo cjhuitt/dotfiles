@@ -1,2 +1,12 @@
 let g:netrw_dirhistmax  =10
-let g:netrw_dirhist_cnt =0
+let g:netrw_dirhistcnt =0
+let g:netrw_dirhist_0='/Volumes/Projects/mcp/Mcp/Application/Planting/ElectricDrive/Tests'
+let g:netrw_dirhist_9='/Volumes/Projects/broken-mcp/Components/ThirdParty/QtMqtt-master/src/cmake'
+let g:netrw_dirhist_8='/Volumes/Projects/broken-mcp/Components/ThirdParty/qtmqtt-dev/QtMqtt'
+let g:netrw_dirhist_7='/Volumes/Projects/broken-mcp/Mcp/Application'
+let g:netrw_dirhist_6='/Volumes/Projects/mcp/Mcp/UiLib/QtTools'
+let g:netrw_dirhist_5='/Volumes/Projects/mcp/Mcp/Application/Ui/Files/Previews'
+let g:netrw_dirhist_4='/Volumes/Projects/mcp/Mcp/Application/Ui/Files/Previews/Layers'
+let g:netrw_dirhist_3='/Volumes/Projects/mcp/Mcp/Application/Ui/Files/Previews'
+let g:netrw_dirhist_2='/Volumes/Projects/mcp/Mcp/Application/Planting/SeedMon/Interfaces'
+let g:netrw_dirhist_1='/Volumes/Projects/mcp/Mcp/Application/SteeringControl/Tests'
